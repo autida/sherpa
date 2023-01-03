@@ -1,0 +1,99 @@
+
+<div class="animated fadeIn" ng-controller="ScanDocCtrl">
+    <div class="row">
+        <div class="col-md-12" style="padding: 1% 0 1% 0">
+            <div class="col-md-6">
+                <div class="col-md-12">
+                    <label><h6><b>Document Name</b></h6></label>
+                    <select class="form-control" ng-model="scandoc.DocumentType">
+                        <option ng-repeat="option in scandocar" value="{{option.DTName }}">{{option.DTName}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12">
+                    <div class="row">
+                        <div class="col-md-12" >
+                            <label style="padding-bottom: 0;margin-bottom: 0;"><h6><b>Tagged</b></h6></label>
+                            <input type="checkbox" ng-model="scandoc.tagged" ng-click="tag()">
+                        <!-- </div> -->
+                        <!-- <div class="col-md-12"> -->
+                            <div class="btn-ctrl" ng-if="scandoc.tagged">
+                                <button ng-if="systemUser.position === 'accounting' || systemUser.position === 'admin'" type="button" id="cv" ng-class="{'btnClicked':buttonclickedcv}" ng-disabled="!scandoc.tagged" class="btn btn-success btn-md btn-block" ng-click = "tagged('cv')">CASH VOUCHER</button>
+                                <button ng-if="systemUser.position === 'cashier' || systemUser.position === 'admin'" type="button" id="pcv" ng-class="{'btnClicked':buttonclickedpcv}" ng-disabled="!scandoc.tagged" class="btn btn-success btn-md btn-block" ng-click = "tagged('pcv')">PETTY CASH VOUCHER</button>
+                                <button ng-if="systemUser.position === 'accounting' || systemUser.position === 'admin'" type="button" id="jv" ng-class="{'btnClicked':buttonclickedjv}" ng-disabled="!scandoc.tagged" class="btn btn-success btn-md btn-block" ng-click = "tagged('jv')">JOURNAL VOUCHER</button>
+                            </div>
+                        </div>
+                        <div class="col-md-12" ng-if="scandoc.tagged">
+                            <div class="btn-ctrl">
+                                <button ng-if="systemUser.position === 'accounting' || systemUser.position === 'admin'" type="button" id="chv" ng-class="{'btnClicked':buttonclickedchv}" ng-disabled="!scandoc.tagged" class="btn btn-success btn-md btn-block" ng-click = "tagged('chv')">CHECK VOUCHER</button>
+                                <button ng-if="systemUser.position === 'accounting' || systemUser.position === 'admin'" type="button" id="lv" ng-class="{'btnClicked':buttonclickedlv}" ng-disabled="!scandoc.tagged" class="btn btn-success btn-md btn-block" ng-click = "tagged('lv')">LIQUIDATION FORM</button>
+                            </div>
+                            <hr>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <label><h6><b>File ID/ Reference No.</b></h6></label>
+                    <input type="text" class="form-control"  ng-model="scandoc.RefNo">
+                </div>
+                <div class="col-md-12">
+                    <label><h6><b>Payee Name</b></h6></label>
+                    <input type="text" class="form-control" ng-model="scandoc.PayeeName">
+                </div>
+                <div class="col-md-12">
+                    <label><h6><b>Store Name</b></h6></label>
+                    <input type="text" class="form-control" ng-model="scandoc.StoreName">
+                </div>
+                <div class="col-md-12">
+                    <label><h6><b>Subject/ Memo</b></h6></label>
+                    <textarea class="form-control" maxlength="500" style="width:100%;height:100px;resize:none;" ng-model="scandoc.Subject" placeholder="Enter memo here..." required></textarea>
+                </div>
+                <div class="col-md-6">
+                    <label><h6><b>Prepared By:</b></h6></label>
+                    <input type="text" class="form-control" ng-model="scandocdefault.ScannedBy" disabled>
+                    <input type="hidden" class="form-control" ng-model="scandocdefault.ScannedByID" disabled>
+                </div>
+                <div class="col-md-6">
+                    <label><h6><b>Date/ Time:</b></h6></label> 
+                    <!-- <div class="row">{{scandoc.datetime}}{{date}} </div> -->
+                    <input type="input" class="form-control" ng-model="scandocdefault.ScanDateTime" disabled>
+                </div>
+               
+            </div>
+            <div class="col-md-6">
+                <label><h6><b>Preview</b></h6></label><br>
+                <!-- <span>*For Scanned File: Go to <i>C:\Users\_computer account_\AppData\Local\Temp</i>, then select the latest file.</span> -->
+                <div class="col-md-12">
+                        <!-- <div ng-if="pdf === false"> -->
+                            <iframe id="frame_modal" src="" style="width:100%;height: 70vh;border-radius: 4px; margin: 0 0 10px 0; border: 1px solid lightgray;" ></iframe>
+                        <!-- </div> -->
+                        
+                        <!-- <div ng-if="pdf===false"> -->
+                             <img  id="img" src="" style="width:100%;height: 70vh;border-radius: 4px; margin: 0 0 10px 0; border: 1px solid lightgray;">
+                             <!-- ng-class="{'hide':vm.pdf}" -->
+                             <!-- </div> -->
+                    <!-- <div id="docimage" ng-if="scan" style="width:100%;height: 70vh;border-radius: 4px; margin: 0 0 10px 0; border: 1px solid lightgray;">
+                    </div> -->
+                    <label><h6><b></b></h6>Note: After scanning the file, click ATTACH FILE for preview.</label><br>
+                    <span>*To access the scanned file: Go to <i>C:\Users\_computer account_\AppData\Local\Temp</i>, sort by date then select the latest file.</span>
+                </div>
+                <!-- <div id="response">sdafasdf</div> -->
+
+                <!-- <img id="img" style="height: 70vh;border-radius: 4px; margin: 0 0 10px 0; border: 1px solid lightgray;" ng-src="{{profile.ProfilePic}}"> -->
+                
+                <!-- <div style="height: 70vh;border-radius: 4px; margin: 0 0 10px 0; border: 1px solid lightgray;"></div> -->
+                <input id="file" type="file" accept="image/*,application/pdf" file-model="image" custom-on-change="Preview" style="display: none;"/>
+                <!-- <input id="scannedfile" type="file" accept="image/*" file-model="image" style="display: none;"/> -->
+                <div class="col-md-12">
+                    <div class="btn-ctrl">
+                        <button type="button" class="btn btn-success btn-md btn-block col-12" ng-click = "changePic()">ATTACH FILE</button>
+                        <button type="button" class="btn btn-success btn-md btn-block col-12" ng-click = "scan()">SCAN FILE</button>
+                        <button type="button" class="btn btn-success btn-md btn-block col-12" ng-click = "save()">SAVE</button>
+                        <button type="button" class="btn btn-cancel btn-md btn-block col-12" ng-click = "cancel()">CLEAR/ NEW</button>
+                        <button type="button" class="btn btn-danger btn-md btn-block col-12"  data-dismiss="modal" aria-label="Close" ng-if="inquiry.modal">CLOSE</button>
+                    </div>
+                </div>
+                <!-- <div id="imag"></div> -->
+            </div>
+        </div>
+    </div>
+</div>

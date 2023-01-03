@@ -1,0 +1,72 @@
+
+    <div class="modal-content">
+        <!-- <div class="modal-header">
+            <strong class="modal-title-name">{{docTagged.ModalHeader}}</strong>
+             <span ng-click="close()" class="fa fa-times"></span>
+        </div> -->
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" ng-click="close()">&times;</button>
+            <h4 class="modal-title">{{docTagged.ModalHeader}}</h4>
+          </div>
+        <div class="modal-body">
+        <div class="row">
+            <div class="col-md-12" style="padding: 1% 1% 1% 1%">            
+            <div class="col-md-12">
+                <div col-md-2><b>Search By:&nbsp;</b>  </div>
+                <!-- <div class="row"> -->
+                   
+                    <div class="col-md-12" style="padding:10px 10px 0 10px">
+                        <div class="col-md-3">
+                            Fie/Reference No: &nbsp; &nbsp; 
+                             <div class="input-group">
+                                 <input type="search" class="form-control" ng-model="inquiry.RefNo">
+                                 <span class="input-group-btn">
+                                 <button ng-click = "search('Reference')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true">
+                                 </span> </button>
+                                 </span>
+                             </div>
+                         </div>
+                        <div class="col-md-4">
+                            Payee: &nbsp; &nbsp; 
+                            <div class="input-group">
+                                <input type="search" class="form-control" ng-model="inquiry.payeeName">
+                                <span class="input-group-btn">
+                                <button ng-click = "search('payee')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true">
+                                </span> </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-4">
+                            Store Name: &nbsp; &nbsp; 
+                            <div class="input-group">
+                                <input type="search" class="form-control" ng-model="inquiry.storeName">
+                                <span class="input-group-btn">
+                                <button ng-click = "search('store')" class="btn btn-success" type="button"><span class="glyphicon glyphicon-search" aria-hidden="true">
+                                </span> </button>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="col-md-1" style="padding-right: 0;">
+                            &nbsp; &nbsp;
+                            <div class="input-group">
+                                <button ng-click = "refresh()" class="btn btn-success" type="button">
+                                    <span class="glyphicon glyphicon-refresh" aria-hidden="true">
+                                    </span> 
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+            <div class="col-md-12">
+                <!-- <strong>Data Length:</strong> {{ gridOptions.data.length | number }} -->
+                <div style="height: 60vh;border-radius: 4px; margin: 20px 10px 10px 10px;" ui-grid="toTagDocument" ui-grid-selection ui-grid-resize-columns ui-grid-pagination></div>
+            </div>
+            </div>
+        
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+
