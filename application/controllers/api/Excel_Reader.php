@@ -32,39 +32,97 @@ Class Excel_Reader extends REST_Controller {
 				$reader = \PhpOffice\PhpSpreadsheet\IOFactory::createReader($inputTileType);
 				$spreadsheet = $reader->load($inputFileName);
 				$sheet = $spreadsheet->getSheet(0);
-				$count_Rows = 8;
+				$collection = [];
 				$result = false;
+				$accountRecevableId = 0;
 				$accountReceivableData = array(
-					'date' => $spreadsheet->getActiveSheet()->getCell('B3')->getFormattedValue(),
+ 					//date_format(date_create_from_format("d/m/Y","29/11/2022"),"m/d/Y");
+					'date' => date("Y-m-d",strtotime($spreadsheet->getActiveSheet()->getCell('B3'))),
 					'totalServedAmount' => $spreadsheet->getActiveSheet()->getCell('F5')->getCalculatedValue(),
 					'totalRudGrossAmount' => $spreadsheet->getActiveSheet()->getCell('H5')->getCalculatedValue(),
 					'totalBalance' => $spreadsheet->getActiveSheet()->getCell('R5')->getCalculatedValue(),
 					'totalStoNetSales' => $spreadsheet->getActiveSheet()->getCell('P5')->getCalculatedValue(),
 					'totalPayment' => $spreadsheet->getActiveSheet()->getCell('Q5')->getCalculatedValue(),
 				);
-				$this->model->saveAccountReceivable($accountReceivableData);
+				$ar_result = $this->model->saveAccountReceivable($accountReceivableData);
+				if($ar_result['id']) {
+					$accountReceivableId = $ar_result['id'];
+				} else {
+					$result = array(
+								'success' => false,
+								'message' => 'Import data failed.'
+							);
+					$this->response($result, REST_Controller::HTTP_OK);
+					return;
+				}
+				$count_Rows = 8;
+				$i = 0;
 				foreach($sheet->getRowIterator() as $row)
 				{
-					$cellValue = $spreadsheet->getActiveSheet()->getCell('A'.$count_Rows)->getValue();
-					if(!$cellValue == "") {
-						$code = $spreadsheet->getActiveSheet()->getCell('A'.$count_Rows);
-						$name = $spreadsheet->getActiveSheet()->getCell('B'.$count_Rows);
+					$cellValue = $spreadsheet->getActiveSheet()->getCell('D'.$count_Rows);
+					
+					if($cellValue != "") {
+						$salesmanCode = $spreadsheet->getActiveSheet()->getCell('A'.$count_Rows);
+						$salesman = $spreadsheet->getActiveSheet()->getCell('B'.$count_Rows);
+						$customer = $spreadsheet->getActiveSheet()->getCell('C'.$count_Rows);
+						$invoiceNo = $spreadsheet->getActiveSheet()->getCell('D'.$count_Rows);
+						$invoiceDate = date("Y-m-d",strtotime($spreadsheet->getActiveSheet()->getCell('E'.$count_Rows)));  
+						$servedAmount = $spreadsheet->getActiveSheet()->getCell('F'.$count_Rows);
+						$tradeReturnGrossAmount = $spreadsheet->getActiveSheet()->getCell('G'.$count_Rows);
+						$rudGrossAmount = $spreadsheet->getActiveSheet()->getCell('H'.$count_Rows);
+						$ewt = $spreadsheet->getActiveSheet()->getCell('I'.$count_Rows);
+						$displayAllowance = $spreadsheet->getActiveSheet()->getCell('J'.$count_Rows);
+						$listingFee = $spreadsheet->getActiveSheet()->getCell('K'.$count_Rows);
+						$rebates = $spreadsheet->getActiveSheet()->getCell('L'.$count_Rows);
+						$BO = $spreadsheet->getActiveSheet()->getCell('M'.$count_Rows);
+						$discount = $spreadsheet->getActiveSheet()->getCell('N'.$count_Rows);
+						$otherDeductions = $spreadsheet->getActiveSheet()->getCell('O'.$count_Rows);
+						$payment = $spreadsheet->getActiveSheet()->getCell('Q'.$count_Rows);
+						$stoNetSales = $spreadsheet->getActiveSheet()->getCell('P'.$count_Rows)->getCalculatedValue();
+						$balance = $spreadsheet->getActiveSheet()->getCell('R'.$count_Rows)->getCalculatedValue();
+						$remarks = $spreadsheet->getActiveSheet()->getCell('S'.$count_Rows)->getCalculatedValue();
+						$aging = $spreadsheet->getActiveSheet()->getCell('T'.$count_Rows)->getOldCalculatedValue();
+						$days30 = $spreadsheet->getActiveSheet()->getCell('U'.$count_Rows)->getOldCalculatedValue();
+						$days60 = $spreadsheet->getActiveSheet()->getCell('V'.$count_Rows)->getOldCalculatedValue();
+						$days90 = $spreadsheet->getActiveSheet()->getCell('W'.$count_Rows)->getOldCalculatedValue();
+						$days120 = $spreadsheet->getActiveSheet()->getCell('X'.$count_Rows)->getOldCalculatedValue();
 						$data = array(
-							'code'=> $code,
-							'name'=> $name,
+							'arId' => $accountReceivableId,
+							'salesmanCode'=> $salesmanCode,
+							'customerName' => $customer,
+							'salesman' => $salesman,
+							'invoiceNo' => $invoiceNo,
+							'invoiceDate' => $invoiceDate,
+							'servedAmount' => $servedAmount,
+							'tradeReturnGrossAmount' => $tradeReturnGrossAmount,
+							'rudGrossAmount' => $rudGrossAmount,
+							'EWT' => $ewt,
+							'displayAllowance' => $displayAllowance,
+							'BO' => $BO,
+							'discount' => $discount,
+							'otherDeductions' => $otherDeductions,
+							'stoNetSales' => $stoNetSales,
+							'payment' => $payment,
+							'balance' => $balance,
+							'remarks' => $remarks,
+							'aging' => $aging,
+							'30days' => $days30,
+							'60days' => $days60,
+							'90days' => $days90,
+							'120days' => $days120
 						);
-
-						$result = $this->model->save($data);
-						if($result['id']) {
+						$collection[$i] = $data;
+						echo $collection[$i]['customerName']." & ". $count_Rows." \n";
 							$count_Rows++;
-						} else {
-							break;
-						}
+							$i++;
+						// }
 					} else {
 						break;
 					}
 					
-				} if($result['id']) {
+				} 
+				$result = $this->model->save_batch($collection);
+				if($result['id']) {
 					$result = array(
 						'id' => $result['id'],
 						'success' => true,

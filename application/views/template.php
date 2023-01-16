@@ -58,7 +58,7 @@
     <script src="<?php echo base_url('assets/theme/vendor/bootstrap/js/bootstrap.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/mdb/js/mdb.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/ngMask/dist/ngMask.min.js'); ?>"></script>
-    <!-- <script src="<?php echo base_url('assets/vendors/bower_components/globalize-master/src/core.js'); ?>"></script> -->
+    <script src="<?php echo base_url('assets/vendors/bower_components/globalize-master/src/core.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/angular-ui-router/release/angular-ui-router.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/oclazyload/dist/ocLazyLoad.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/angular-animate/angular-animate.min.js'); ?>"></script>
@@ -80,7 +80,7 @@
     <script src="<?php echo base_url('assets/vendors/bower_components/sheetjs-master/dist/xlsx.full.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/bower_components/chart.js/dist/Chart.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/bower_components/angular-chart.js/dist/angular-chart.min.js'); ?>"></script>
-    <script src="<?php echo base_url('assets/bower_components/chart.js/dist/chart-plugin.js'); ?>"></script>
+   <script src="<?php echo base_url('assets/bower_components/chart.js/dist/chart-plugin.js'); ?>"></script> 
     <!-- app -->
     <script src="<?php  echo base_url('ngapp/app.module.js'); ?>"></script>
     <script src="<?php  echo base_url('ngapp/app.routes.js'); ?>"></script>
