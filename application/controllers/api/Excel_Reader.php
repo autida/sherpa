@@ -23,7 +23,7 @@ Class Excel_Reader extends REST_Controller {
 					$randomnum = rand(0,100);
 					$extns = explode('.', $file['name']);
 					$file_ext = strtolower(end($extns));
-					$file_name = "test_".time().".".$file_ext;
+					$file_name = "excelfile_".time().".".$file_ext;
 					$path = "assets/uploads/imports/";
 					move_uploaded_file($file_tmp, $path . $file_name);
 					$inputFileName = $path.$file_name;
@@ -113,33 +113,33 @@ Class Excel_Reader extends REST_Controller {
 						);
 						$collection[$i] = $data;
 						echo $collection[$i]['customerName']." & ". $count_Rows." \n";
-							$count_Rows++;
-							$i++;
-						// }
+							$count_Rows++; //move 1 row down
+							$i++; //collection indexing
 					} else {
 						break;
 					}
-					
 				} 
-				$result = $this->model->save_batch($collection);
-				if($result['id']) {
-					$result = array(
-						'id' => $result['id'],
-						'success' => true,
-						'message' => 'Data Imported Successfully'
-					);
-					$this->response($result, REST_Controller::HTTP_OK);
-				} else {
-					$result = array(
-						'success' => false,
-						'message' => 'Import data failed.'
-					);
-					$this->response($result, REST_Controller::HTTP_OK);
+				if(count($collection) > 0) {
+					$result = $this->model->save_batch($collection);
+					if($result['id']) {
+						$result = array(
+							'id' => $result['id'],
+							'success' => true,
+							'message' => 'Data Imported Successfully'
+						);
+						$this->response($result, REST_Controller::HTTP_OK);
+					} else {
+						$result = array(
+							'success' => false,
+							'message' => 'Import data failed.'
+						);
+						$this->response($result, REST_Controller::HTTP_OK);
+					}
 				}
 			} else {
 					$result = array(
 								'success' => false,
-								'message' => 'Import data failed.File'
+								'message' => 'Import data failed.'
 							);
 							$this->response($result, REST_Controller::HTTP_OK);
 			}
