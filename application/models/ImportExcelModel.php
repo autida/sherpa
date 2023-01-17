@@ -27,5 +27,14 @@ Class ImportExcelModel extends CI_Model  {
 		return false;
 	}
  }
+
+ public function saveSalesPerformance($data) {
+	$this->db->insert('sales_performance_report_hdr',$data);
+	if($this->db->affected_rows()) {
+		return array('id' => $this->db->insert_id());
+	} else {
+		return false;
+	}
+ }
 }
 ?>

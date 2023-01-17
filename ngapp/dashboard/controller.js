@@ -4,12 +4,14 @@ angular
     .controller("DashboardCtrl", DashboardCtrl)
     .controller("MenuCtrl", MenuCtrl);
 
-DashboardCtrl.$inject = ["$scope", "$ocLazyLoad", "$injector"];
+DashboardCtrl.$inject = ["$scope", "$ocLazyLoad", "$injector","$filter"];
 MenuCtrl.$inject = ["$scope", "$ocLazyLoad", "$injector", "$state", "$filter"];
 
 function DashboardCtrl($scope, $ocLazyLoad, $injector) {
     var vm = this;
     var filter = $injector.get("$filter");
+    vm.date = new Date();
+    vm.salesDate = new Date();
     vm.title = "SHERPA Dashboard";
 
     $ocLazyLoad
@@ -18,10 +20,11 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
             DashboardSvc = $injector.get("DashboardSvc");
         });
     vm.submitFile = function() {
+        var exdate = filter('date')(vm.date, 'yyyy-MM-dd');
         var newData = new FormData();
         newData.append('file',vm.exFile);
+        newData.append('date',exdate);
         newData.append('upload', true);
-        console.log(newData, vm.exFile, newData.getAll);
         DashboardSvc.upload(newData).then(function(response){
             if(response.success){
                 if(response.id){
@@ -32,7 +35,25 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
             }else{
                 DashboardSvc.showSwal('Warning',response.message,'warning');
             }
-            console.log(response);
+        });
+       
+    }
+    vm.submitSalesFile = function() {
+        var salesDate = filter('date')(vm.salesDate, 'yyyy-MM-dd');
+        var newData = new FormData();
+        newData.append('file',vm.salesFile);
+        newData.append('salesDate',salesDate);
+        newData.append('uploadSales', true);
+        DashboardSvc.upload(newData).then(function(response){
+            if(response.success){
+                if(response.id){
+                    DashboardSvc.showSwal('Success',response.message,'success');
+                }else{
+                    DashboardSvc.showSwal('Success',response.message,'success');
+                }
+            }else{
+                DashboardSvc.showSwal('Warning',response.message,'warning');
+            }
         });
        
     }
