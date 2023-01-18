@@ -88,7 +88,7 @@ Class Excel_Reader extends REST_Controller {
 						$days90 = $spreadsheet->getActiveSheet()->getCell('W'.$count_Rows)->getOldCalculatedValue();
 						$days120 = $spreadsheet->getActiveSheet()->getCell('X'.$count_Rows)->getOldCalculatedValue();
 						$data = array(
-							'arId' => $accountReceivableId,
+							'arHdrId' => $accountReceivableId,
 							'salesmanCode'=> $salesmanCode,
 							'customerName' => $customer,
 							'salesman' => $salesman,
@@ -113,7 +113,6 @@ Class Excel_Reader extends REST_Controller {
 							'120days' => $days120
 						);
 						$collection[$i] = $data;
-						echo $collection[$i]['customerName']." & ". $count_Rows." \n";
 							$count_Rows++; //move 1 row down
 							$i++; //collection indexing
 					} else {
@@ -181,10 +180,93 @@ Class Excel_Reader extends REST_Controller {
 					'totalAmountNetOfDiscount' => $spreadsheet->getActiveSheet()->getCell('V'.$grandTotalRow)->getValue()
 				);
 				echo $grandTotalRow;
-				var_dump($salesPerformanceData);
 				$sp_result = $this->model->saveSalesPerformance($salesPerformanceData);
 				if($sp_result['id']) {
-					$accountReceivableId = $sp_result['id'];
+					$sprHdrId = $sp_result['id'];
+					$count_Rows = 8;
+					$i = 0;
+					foreach($sheet->getRowIterator() as $row)
+					{
+						$cellValue = $spreadsheet->getActiveSheet()->getCell('E'.$count_Rows);
+						if($cellValue != "") {
+							$customerCode = $spreadsheet->getActiveSheet()->getCell('C'.$count_Rows);
+							$customer = $spreadsheet->getActiveSheet()->getCell('D'.$count_Rows);
+							$invoiceNo = $spreadsheet->getActiveSheet()->getCell('E'.$count_Rows);
+							$invoiceDate = date("Y-m-d",strtotime($spreadsheet->getActiveSheet()->getCell('F'.$count_Rows)));  
+							$skuCode = $spreadsheet->getActiveSheet()->getCell('G'.$count_Rows);
+							$skuName = $spreadsheet->getActiveSheet()->getCell('H'.$count_Rows);
+							$orderQty = $spreadsheet->getActiveSheet()->getCell('I'.$count_Rows);
+							$servedQty = $spreadsheet->getActiveSheet()->getCell('J'.$count_Rows);
+							$unservedQty = $spreadsheet->getActiveSheet()->getCell('K'.$count_Rows);
+							$tradeReturnQty = $spreadsheet->getActiveSheet()->getCell('L'.$count_Rows);
+							$rudQty = $spreadsheet->getActiveSheet()->getCell('M'.$count_Rows);
+							$totalPcs = $spreadsheet->getActiveSheet()->getCell('N'.$count_Rows);
+							$price = $spreadsheet->getActiveSheet()->getCell('O'.$count_Rows);
+							$orderAmount = $spreadsheet->getActiveSheet()->getCell('P'.$count_Rows);
+							$servedAmount = $spreadsheet->getActiveSheet()->getCell('Q'.$count_Rows);
+							$tradeReturnGrossAmount = $spreadsheet->getActiveSheet()->getCell('R'.$count_Rows);
+							$rudGrossAmount = $spreadsheet->getActiveSheet()->getCell('S'.$count_Rows);
+							$stoNetSales = $spreadsheet->getActiveSheet()->getCell('T'.$count_Rows);
+							$discount = $spreadsheet->getActiveSheet()->getCell('U'.$count_Rows);
+							$amountNetOfDiscount = $spreadsheet->getActiveSheet()->getCell('V'.$count_Rows);
+							$percentOfr = $spreadsheet->getActiveSheet()->getCell('W'.$count_Rows);
+							$poReference = $spreadsheet->getActiveSheet()->getCell('X'.$count_Rows);
+							$stoReferenceNo = $spreadsheet->getActiveSheet()->getCell('Y'.$count_Rows);
+							$businessOperaationGroup = $spreadsheet->getActiveSheet()->getCell('Z'.$count_Rows);
+							$accountType = $spreadsheet->getActiveSheet()->getCell('AA'.$count_Rows);
+							$data = array(
+								'sprHdrId' => $sprHdrId,
+								'csCode' => $customerCode,
+								'csDescription' => $customer,
+								'invoiceNo' => $invoiceNo,
+								'invoiceDate' => $invoiceDate,
+								'skuCode' => $skuCode,
+								'skuName' => $skuName,
+								'orderQty' => $orderQty,
+								'servedQty' => $servedQty,
+								'unservedQty' => $unservedQty,
+								'tradeReturnQty' => $tradeReturnQty, 
+								'rudQty' => $rudQty,
+								'totalPcs' => $totalPcs,
+								'price' => $price,
+								'orderAmount' => $orderAmount,
+								'servedAmount' => $servedAmount,
+								'tradeReturnGrossAmount' => $tradeReturnGrossAmount,
+								'rudGrossAmount' => $rudGrossAmount,
+								'stoNetSales' => $stoNetSales,
+								'discount' => $discount,
+								'amountNetOfDiscount' => $amountNetOfDiscount,
+								'percentOfr' => $percentOfr,
+								'poReference' => $poReference,
+								'soReferenceNo' => $stoReferenceNo,
+								'businessOperationGroup' => $businessOperaationGroup,
+								'accountType' => $accountType
+							);
+							$collection[$i] = $data;							
+								$count_Rows++; //move 1 row down
+								$i++; //collection indexing
+								$spresult = $this->model->save_spr_batch($data);
+						} else {
+							break;
+						}
+					} 
+					if(count($collection) > 0) {
+						// $spresult = $this->model->save_spr_batch($data);
+						if($spresult['id']) {
+							$result = array(
+								'id' => $spresult['id'],
+								'success' => true,
+								'message' => 'Data Imported Successfully'
+							);
+							$this->response($result, REST_Controller::HTTP_OK);
+						} else {
+							$result = array(
+								'success' => false,
+								'message' => 'Import data failed.'
+							);
+							$this->response($result, REST_Controller::HTTP_OK);
+						}
+					}
 				} else {
 					$result = array(
 								'success' => false,
@@ -193,87 +275,7 @@ Class Excel_Reader extends REST_Controller {
 					$this->response($result, REST_Controller::HTTP_OK);
 					return;
 				}
-				// $count_Rows = 8;
-				// $i = 0;
-				// foreach($sheet->getRowIterator() as $row)
-				// {
-				// 	$cellValue = $spreadsheet->getActiveSheet()->getCell('D'.$count_Rows);
-					
-				// 	if($cellValue != "") {
-				// 		$salesmanCode = $spreadsheet->getActiveSheet()->getCell('A'.$count_Rows);
-				// 		$salesman = $spreadsheet->getActiveSheet()->getCell('B'.$count_Rows);
-				// 		$customer = $spreadsheet->getActiveSheet()->getCell('C'.$count_Rows);
-				// 		$invoiceNo = $spreadsheet->getActiveSheet()->getCell('D'.$count_Rows);
-				// 		$invoiceDate = date("Y-m-d",strtotime($spreadsheet->getActiveSheet()->getCell('E'.$count_Rows)));  
-				// 		$servedAmount = $spreadsheet->getActiveSheet()->getCell('F'.$count_Rows);
-				// 		$tradeReturnGrossAmount = $spreadsheet->getActiveSheet()->getCell('G'.$count_Rows);
-				// 		$rudGrossAmount = $spreadsheet->getActiveSheet()->getCell('H'.$count_Rows);
-				// 		$ewt = $spreadsheet->getActiveSheet()->getCell('I'.$count_Rows);
-				// 		$displayAllowance = $spreadsheet->getActiveSheet()->getCell('J'.$count_Rows);
-				// 		$listingFee = $spreadsheet->getActiveSheet()->getCell('K'.$count_Rows);
-				// 		$rebates = $spreadsheet->getActiveSheet()->getCell('L'.$count_Rows);
-				// 		$BO = $spreadsheet->getActiveSheet()->getCell('M'.$count_Rows);
-				// 		$discount = $spreadsheet->getActiveSheet()->getCell('N'.$count_Rows);
-				// 		$otherDeductions = $spreadsheet->getActiveSheet()->getCell('O'.$count_Rows);
-				// 		$payment = $spreadsheet->getActiveSheet()->getCell('Q'.$count_Rows);
-				// 		$stoNetSales = $spreadsheet->getActiveSheet()->getCell('P'.$count_Rows)->getCalculatedValue();
-				// 		$balance = $spreadsheet->getActiveSheet()->getCell('R'.$count_Rows)->getCalculatedValue();
-				// 		$remarks = $spreadsheet->getActiveSheet()->getCell('S'.$count_Rows)->getCalculatedValue();
-				// 		$aging = $spreadsheet->getActiveSheet()->getCell('T'.$count_Rows)->getOldCalculatedValue();
-				// 		$days30 = $spreadsheet->getActiveSheet()->getCell('U'.$count_Rows)->getOldCalculatedValue();
-				// 		$days60 = $spreadsheet->getActiveSheet()->getCell('V'.$count_Rows)->getOldCalculatedValue();
-				// 		$days90 = $spreadsheet->getActiveSheet()->getCell('W'.$count_Rows)->getOldCalculatedValue();
-				// 		$days120 = $spreadsheet->getActiveSheet()->getCell('X'.$count_Rows)->getOldCalculatedValue();
-				// 		$data = array(
-				// 			'arId' => $accountReceivableId,
-				// 			'salesmanCode'=> $salesmanCode,
-				// 			'customerName' => $customer,
-				// 			'salesman' => $salesman,
-				// 			'invoiceNo' => $invoiceNo,
-				// 			'invoiceDate' => $invoiceDate,
-				// 			'servedAmount' => $servedAmount,
-				// 			'tradeReturnGrossAmount' => $tradeReturnGrossAmount,
-				// 			'rudGrossAmount' => $rudGrossAmount,
-				// 			'EWT' => $ewt,
-				// 			'displayAllowance' => $displayAllowance,
-				// 			'BO' => $BO,
-				// 			'discount' => $discount,
-				// 			'otherDeductions' => $otherDeductions,
-				// 			'stoNetSales' => $stoNetSales,
-				// 			'payment' => $payment,
-				// 			'balance' => $balance,
-				// 			'remarks' => $remarks,
-				// 			'aging' => $aging,
-				// 			'30days' => $days30,
-				// 			'60days' => $days60,
-				// 			'90days' => $days90,
-				// 			'120days' => $days120
-				// 		);
-				// 		$collection[$i] = $data;
-				// 		echo $collection[$i]['customerName']." & ". $count_Rows." \n";
-				// 			$count_Rows++; //move 1 row down
-				// 			$i++; //collection indexing
-				// 	} else {
-				// 		break;
-				// 	}
-				// } 
-				// if(count($collection) > 0) {
-				// 	$result = $this->model->save_batch($collection);
-				// 	if($result['id']) {
-				// 		$result = array(
-				// 			'id' => $result['id'],
-				// 			'success' => true,
-				// 			'message' => 'Data Imported Successfully'
-				// 		);
-				// 		$this->response($result, REST_Controller::HTTP_OK);
-				// 	} else {
-				// 		$result = array(
-				// 			'success' => false,
-				// 			'message' => 'Import data failed.'
-				// 		);
-				// 		$this->response($result, REST_Controller::HTTP_OK);
-				// 	}
-				// }
+				
 			} else {
 					$result = array(
 								'success' => false,
@@ -284,7 +286,7 @@ Class Excel_Reader extends REST_Controller {
 		}else {
 			$result = array(
 						'success' => false,
-						'message' => 'Import data failed.Cannot Enter'
+						'message' => 'Import data failed. Process did not proceed.'
 					);
 					$this->response($result, REST_Controller::HTTP_OK);
 		}
