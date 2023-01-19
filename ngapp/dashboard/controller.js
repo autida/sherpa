@@ -25,6 +25,7 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
         newData.append('file',vm.exFile);
         newData.append('date',exdate);
         newData.append('upload', true);
+        LOADING.classList.add('open');
         DashboardSvc.upload(newData).then(function(response){
             if(response.success){
                 if(response.id){
@@ -35,6 +36,7 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
             }else{
                 DashboardSvc.showSwal('Warning',response.message,'warning');
             }
+            LOADING.classList.remove('open');
         });
        
     }
@@ -44,6 +46,7 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
         newData.append('file',vm.salesFile);
         newData.append('salesDate',salesDate);
         newData.append('uploadSales', true);
+        LOADING.classList.add('open');
         DashboardSvc.upload(newData).then(function(response){
             if(response.success){
                 if(response.id){
@@ -54,6 +57,7 @@ function DashboardCtrl($scope, $ocLazyLoad, $injector) {
             }else{
                 DashboardSvc.showSwal('Warning',response.message,'warning');
             }
+            LOADING.classList.remove('open');
         });
        
     }

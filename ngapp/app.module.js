@@ -7,8 +7,8 @@ const ADMINURL = APPURL + 'administrative/';
 const TRANSURL = APPURL + 'transaction/';
 const REPURL = APPURL + 'reports/';
 const APIURL = '';
-const PROJURL = '/pgehai';
-const CSSURL = '/pgehai/assets/css/app.css';
+const PROJURL = '/sherpa';
+const CSSURL = '/sherpa/assets/css/app.css';
 const LOADING = document.getElementById('loading-screen');
 // Default colors
 

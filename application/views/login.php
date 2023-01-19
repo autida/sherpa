@@ -9,14 +9,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title>PGEHAI | Login</title>
+    <title>SHERPA | Login</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url('assets/theme/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
     <link href="<?php echo base_url('assets/css/style.css'); ?>" rel="stylesheet">
 
-    <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.png'); ?>" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/images/system.png'); ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/images/system.png'); ?>" type="image/x-icon">
 
     <link href="<?php echo base_url('assets/theme/vendor/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
 
@@ -25,23 +25,24 @@
 <body>
     <div class="login-page">
         <div class="dark-bg"></div>
-        <div class="background-images">
-            <img src="<?php echo base_url('assets/images/bg2.png'); ?>" />
-            <img src="<?php echo base_url('assets/images/bg1.png'); ?>" />
-            <img src="<?php echo base_url('assets/images/bg2.png'); ?>" />
-            <img src="<?php echo base_url('assets/images/bg3.png'); ?>" />
-            <img src="<?php echo base_url('assets/images/bg2.png'); ?>" />
+        <div class="background-images" style="opacity: 0.5">
+            <img src="<?php echo base_url('assets/images/bg2.jpg'); ?>" />
+            <img src="<?php echo base_url('assets/images/bg4.jpg'); ?>" />
+            <img src="<?php echo base_url('assets/images/bg3.jpg'); ?>" />
+            <img src="<?php echo base_url('assets/images/bg1.jpg'); ?>" />
+            <img src="<?php echo base_url('assets/images/bg5.jpg'); ?>" />
         </div>
         <div class="login">
             <div class="h10vh"></div>
             <div class="login-bg">
                 <div class="logo-div">
                     <div class="logo-brand text-center">
-                        <i class="fa fa-home fa-fw"></i>
+                        <i class="fa fa-pie-chart fa-fw"></i>
+                        <!-- <img src="<?php echo base_url('assets/images/system.png'); ?>" /> -->
                     </div>
                     <div class="logo-text text-center">
-                        <p class="first">PGEHAI</p>
-                        <p class="second">Pueblo Golf Estates Homeowners Association Inc.</p>
+                        <p class="first">SHERPA</p>
+                        <p class="second">Consumer Goods Trading</p>
                     </div>
                 </div>
                 <div class="login-div">

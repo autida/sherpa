@@ -8,7 +8,8 @@ require APPPATH . 'libraries/REST_Controller.php';
 Class Excel_Reader extends REST_Controller {
     function __construct() {
         parent::__construct();
-        $this->load->model('ImportExcelModel','model');    }
+        $this->load->model('ImportExcelModel','model');   
+	 }
 
    
 	public function index_post() {
@@ -179,7 +180,6 @@ Class Excel_Reader extends REST_Controller {
 					'totalDiscount' => $spreadsheet->getActiveSheet()->getCell('U'.$grandTotalRow)->getValue(),
 					'totalAmountNetOfDiscount' => $spreadsheet->getActiveSheet()->getCell('V'.$grandTotalRow)->getValue()
 				);
-				echo $grandTotalRow;
 				$sp_result = $this->model->saveSalesPerformance($salesPerformanceData);
 				if($sp_result['id']) {
 					$sprHdrId = $sp_result['id'];

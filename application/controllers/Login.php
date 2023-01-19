@@ -31,7 +31,6 @@ class Login extends REST_Controller {
     }
 
     public function index_post(){
-
         $data = array(
             'username' => $this->input->post('username'),
             'password' => $this->input->post('password')

@@ -15,8 +15,8 @@
 
     <!-- Bootstrap Core CSS -->
     <link href="<?php  echo base_url('assets/theme/vendor/bootstrap/css/bootstrap.min.css'); ?>" rel="stylesheet">
-    <link rel="shortcut icon" href="<?php echo base_url('assets/images/favicon.png'); ?>" type="image/x-icon">
-    <link rel="icon" href="<?php echo base_url('assets/images/favicon.png'); ?>" type="image/x-icon">
+    <link rel="shortcut icon" href="<?php echo base_url('assets/images/system.png'); ?>" type="image/x-icon">
+    <link rel="icon" href="<?php echo base_url('assets/images/system.png'); ?>" type="image/x-icon">
     <!-- Custom Fonts -->
     <link href="<?php echo base_url('assets/theme/vendor/font-awesome/css/font-awesome.min.css'); ?>" rel="stylesheet" type="text/css">
     <link href="<?php echo base_url('assets/css/app.css'); ?>" rel="stylesheet">
@@ -28,10 +28,10 @@
 </head>
 
 <body ng-app="app" class="header-fixed sidebar-fixed aside-menu-fixed aside-menu-hidden">
-    <!-- <div class="loading-screen" id="loading-screen">
-        <div class="loading-gif">
-            <img src="<?php echo base_url('assets/images/golf-boy.gif'); ?>" />
-        </div>
+    <div class="loading-screen" id="loading-screen">
+        <!-- <div class="loading-gif">
+            <img src="<?php echo base_url('assets/images/giphy.gif'); ?>" />
+        </div> -->
         <div class="loading-text">
             <span style="--i:1">L</span>
             <span style="--i:2">o</span>
@@ -44,7 +44,7 @@
             <span style="--i:9">.</span>
             <span style="--i:10">.</span>
         </div>
-    </div> -->
+    </div>
     <ui-view></ui-view>
     <!-- /#wrapper -->
     <input type="hidden" id="base_url" value="<?php echo base_url(); ?>">

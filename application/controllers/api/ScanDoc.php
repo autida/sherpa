@@ -22,6 +22,7 @@ class ScanDoc extends REST_Controller{
     }
 
     public function index_get(){
+        echo "hi";
         if($this->get('cv')){
             $result = $this->model->getCashVoucherHdr();
         }else if($this->get('pcv')){
