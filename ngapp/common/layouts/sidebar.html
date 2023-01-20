@@ -1,0 +1,192 @@
+<div class="navbar-default sidebar" role="navigation">
+    <div class="sidebar-nav">
+        <div class="brand">
+            <div class="company-logo">
+                <!-- <image src="assets/images/top_back.png"> -->
+            </div>
+            <div class="brand-logo">
+				<i class="fa fa-pie-chart"></i>
+			</div>
+			<div class="brand-text">
+				<p>SHERPA</p>
+				<span>Consumer Goods Trading</span>
+			</div>
+        </div>
+        <div class="profile">
+            <div class="round">
+                <img ng-src="{{vm.pic}}" />
+            </div>
+            <div class="profile-setting">
+                <h3>{{ vm.userName }}</h3>
+                <div class="dropdown show">
+                    <h4 class="dropdown-toggle" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Account Settings
+                        <i class="fa fa-caret-down fa-fw"></i>
+                    </h4>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                        <a class="dropdown-item" ui-sref="app.profile">
+                            <i class="fa fa-user fa-fw"></i>View Profile</a>
+                        <a class="dropdown-item" ng-click="vm.logout()">
+                            <i class="fa fa-sign-out fa-fw"></i>Logout</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="menus">
+            <ul class="nav" id="side-menu">
+                <li ui-sref-active="selected">
+                    <a ui-sref="app.main" ng-click="vm.dashboard()">
+                        <i class="fa fa-th-large"></i> &nbsp; Dashboard</a>
+                </li>
+                <!-- <li ng-class="{active: vm.openMenu === 'masterfile'}">
+					<a class="pointer" ng-click="vm.openSubMenu('masterfile')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Masterfile</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'masterfile'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.member-list">
+								<i class="fa fa-check"></i> &nbsp; Home Owner List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.other-income">
+								<i class="fa fa-check"></i> &nbsp; Other Income List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.masterfile.chart-of-account">
+								<i class="fa fa-check"></i> &nbsp; Chart of Account List</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'administrative'}">
+					<a class="pointer" ng-click="vm.openSubMenu('administrative')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Administrative</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'administrative'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.user-list">
+								<i class="fa fa-check"></i> &nbsp; User List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.signatory-list">
+								<i class="fa fa-check"></i> &nbsp; Signatory List</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.or-setup">
+								<i class="fa fa-check"></i> &nbsp; O.R Series Setup</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.administrative.auto-debit-chart-of-account">
+								<i class="fa fa-check"></i> &nbsp; Transaction Auto Debit Chart of Account</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'transaction'}">
+					<a class="pointer" ng-click="vm.openSubMenu('transaction')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Transaction</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'transaction'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.cashiering-payment">
+								<i class="fa fa-check"></i> &nbsp; Cashiering Payment</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.petty-cash-entry">
+								<i class="fa fa-check"></i> &nbsp; Petty Cash Entry</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.check-issuance">
+								<i class="fa fa-check"></i> &nbsp; Check Issuance</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.general-journal-entry">
+								<i class="fa fa-check"></i> &nbsp; General Journal Entry</a>
+						</li>
+						<li class="divider"></li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.monthly-receivable">
+								<i class="fa fa-check"></i> &nbsp; Run Monthly Receivable</a>
+						</li>
+						
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.monthly-dues-ledger">
+								<i class="fa fa-check"></i> &nbsp; Monthly Dues Ledger</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.transaction.construction-bond">
+								<i class="fa fa-check"></i> &nbsp; Construction Bond</a>
+						</li>
+					</ul>
+				</li>
+				<li ng-class="{active: vm.openMenu === 'reports'}">
+					<a class="pointer" ng-click="vm.openSubMenu('reports')">
+						<i class="fa fa-tag first-tag"></i> &nbsp;
+						<span>Reports</span>
+						<span class="fa arrow"></span>
+					</a>
+					<ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === 'reports'}">
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.aging-of-receivable">
+								<i class="fa fa-check"></i> &nbsp; Aging of Receivable</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.collection-vs-receivable">
+								<i class="fa fa-check"></i> &nbsp; Collection Vs. Receivable</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.construction-bond-report">
+								<i class="fa fa-check"></i> &nbsp; Construction Bond Report</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.cashier-daily-cash-disposition">
+								<i class="fa fa-check"></i> &nbsp; Cashier Daily Cash Disposition</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.cashier-summary">
+								<i class="fa fa-check"></i> &nbsp; Cashier Summary</a>
+						</li>
+						<li class="divider"></li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.trial-balance">
+								<i class="fa fa-check"></i> &nbsp; Trial Balance</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.income-statement">
+								<i class="fa fa-check"></i> &nbsp; Income Statement</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.balance-sheet">
+								<i class="fa fa-check"></i> &nbsp; Balance Sheet</a>
+						</li>
+						<li ui-sref-active="selected">
+							<a ui-sref="app.reports.journal-book">
+								<i class="fa fa-check"></i> &nbsp; Journal Book</a>
+						</li>
+					</ul>
+				</li> -->
+                <li ng-repeat="x in vm.menuList" ng-class="{active: vm.openMenu === x.group}">
+                    <a class="pointer" ng-click="vm.openSubMenu(x.group)">
+                        <i class="fa fa-tag first-tag"></i> &nbsp;
+                        <span>{{x.group}}</span>
+                        <span class="fa arrow"></span>
+                    </a>
+                    <ul class="nav nav-second-level" ng-class="{'open': vm.openMenu === x.group}">
+                        <li ui-sref-active="selected" ng-repeat="y in x.value">
+                            <a ui-sref="{{y.FormLocation}}">
+                                <i class="fa fa-check"></i> {{y.FormName}}</a>
+                        </li>
+                    </ul>
+                </li>
+                <li ui-sref-active="selected" ng-if="vm.level === 'SCHEMA ADMIN'">
+                    <a ui-sref="app.menu" ng-click="vm.addMenu()">
+                        <i class="fa fa-cogs"></i> &nbsp; Developer Settings</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,54 @@
+<div ng-controller="DashboardCtrl as vm" class="dashboard">
+    <div class="col-md-6">
+        <form action="" class="hide-print">
+            <h5 class="page-header">Account Receivable Report</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="vm.date">Date  </label>
+                        <input type="date" class="form-control" ng-model="vm.date">
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Import File</label>
+                        <input type="file" class="form-control" file-model="vm.exFile">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for=""> &nbsp; </label>
+                        <br>
+                        <button type="button" class="btn btn-primary" ng-click="vm.submitFile()">
+                            Import</button>
+                    </div>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-6">
+        <form action="" class="hide-print">
+            <h5 class="page-header">Sales Performance Report</h5>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="vm.date">Date  </label>
+                        <input type="date" class="form-control" ng-model="vm.salesDate">
+                    </div>
+                    <div class="form-group">
+                        <label for="start_date">Import File</label>
+                        <input type="file" class="form-control" file-model="vm.salesFile">
+                    </div>
+                    
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for=""> &nbsp; </label>
+                        <br>
+                        <button type="button" class="btn btn-primary" ng-click="vm.submitSalesFile()">
+                            Import</button>
+                    </div>
+                    
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
