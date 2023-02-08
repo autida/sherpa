@@ -30,7 +30,6 @@ angular
 		'ui.grid.cellNav',
 		'ui.grid.selection',
 		'ui.grid.resizeColumns',
-		// 'ui.bootstrap.contextMenu',
 		'ngMask',
 		'toastr'
 	])
@@ -56,32 +55,32 @@ angular
 			$ocLazyLoad
 				.load([APPURL + 'app.service.js?v=' + VERSION,])
 				.then(function (d) {
-					NotAllowedMenuSvc = $injector.get("NotAllowedMenuSvc");
-					role();
+					// NotAllowedMenuSvc = $injector.get("NotAllowedMenuSvc");
+					// role();
 				});
-			var notAllowedMenuList = [];
-			function role() {
-				NotAllowedMenuSvc.get({ disallowed: true })
-					.then(function (response) {
-						if (response.message) {
-							notAllowedMenuList = [];
-						} else {
-							notAllowedMenuList = response;
-						}
-					})
-			}
+			// var notAllowedMenuList = [];
+			// function role() {
+			// 	NotAllowedMenuSvc.get({ disallowed: true })
+			// 		.then(function (response) {
+			// 			if (response.message) {
+			// 				notAllowedMenuList = [];
+			// 			} else {
+			// 				notAllowedMenuList = response;
+			// 			}
+			// 		})
+			// }
 			Idle.watch();
 			$rootScope.$on('IdleTimeout', function () {
 				angular.element(document.getElementById('idle-page')).addClass('open');
 			});
 			$rootScope.$on("$locationChangeStart", function () {
-				notAllowedMenuList.forEach(function (item) {
-					if ($location.$$path === item.FormURL) {
-						event.preventDefault();
-						$location.path('/');
-						angular.element(document.getElementById('page-not-allowed')).addClass('open');
-					}
-				});
+				// notAllowedMenuList.forEach(function (item) {
+				// 	if ($location.$$path === item.FormURL) {
+				// 		event.preventDefault();
+				// 		$location.path('/');
+				// 		angular.element(document.getElementById('page-not-allowed')).addClass('open');
+				// 	}
+				// });
 			})
 			$rootScope.$state = $state;
 			return ($rootScope.$stateParams = $stateParams);

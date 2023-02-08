@@ -133,8 +133,9 @@
 }
 
 .sidebar {
-    background: rgba(14, 13, 13);
+    background: rgb(38 100 153);
 }
+    
 
 .sidebar .sidebar-nav.navbar-collapse {
     padding-left: 0;
@@ -173,6 +174,7 @@
 
 .sidebar .nav-second-level li a {
     display: flex;
+    font-size: 1.3rem;
 }
 
 .sidebar .nav-second-level li a i {
@@ -368,7 +370,8 @@
 } */
 
 .sidebar ul li a {
-    color: #a8acb1;
+    color: #e8f3ff;
+    opacity: 0.7;
 }
 
 .sidebar ul li {
@@ -379,8 +382,9 @@
 .sidebar ul li:hover,
 .sidebar ul li a:hover,
 .sidebar ul li a:focus {
-    background: rgba(0, 0, 0, 0.2);
-    color: #fff;
+    background: rgb(19, 50, 76);
+    color: #fff !important;
+    opacity: 1;
 }
 
 
@@ -400,7 +404,7 @@
 
 .sidebar ul li.selected a::after {
     content: "";
-    background: #fff;
+    /* background: #359df1; */
     width: 15px;
     height: 50px;
     position: absolute;
@@ -414,6 +418,7 @@
 .sidebar ul li ul.nav-second-level a:active {
     background: none;
     color: #fff !important;
+    opacity: 1;
 }
 
 .nav>li>a:focus,
@@ -711,7 +716,7 @@ li.active span {
 }
 
 .form-control {
-    height: 40px;
+    height: 2.5em;
     font-weight: 500;
 }
 
@@ -1022,11 +1027,11 @@ li.divider {
 }
 
 .ui-grid-header-cell-label {
-    font-size: 17px;
+    font-size: 1rem;
 }
 
 .ui-grid-cell-contents {
-    font-size: 16px;
+    font-size: 14px;
 }
 
 .group-input {
@@ -1935,7 +1940,7 @@ button.btn-effect:hover i {
         margin-right: 20px;
     }
     .report-table table th {
-        font-size: 12px;
+        font-size: 1.2rem;
         padding: 2px 5px;
     }
     .report-table table td {
@@ -2178,4 +2183,103 @@ div.dot {
     width: 100%;
     height: 100px;
     border-right: 1px solid black;
+}
+/* new */ 
+.rw-height {
+    height: 3em;
+    margin-bottom: .5em;
+}
+.cca-label {
+    text-align: right;
+    vertical-align: bottom;
+    margin-top: 0.7em;
+}
+.cca-input {
+    margin-top: 0.5em;
+}
+.cca-data {
+    text-align: left;
+    vertical-align: bottom;
+    margin-top: 0.7em;
+}
+.dr {
+    padding-left: 2em;
+    padding-top: 1em;
+}
+.btns{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    color: white;
+}
+.btn-new {
+    background-color: rgb(255, 209, 209);
+}
+.btn-new:hover{
+    color:white !important;
+    background-color: rgb(250, 183, 183);
+}
+.btn-save {
+    background-color: rgb(178, 216, 203);
+}
+.btn-save:hover {
+    color:white !important;
+    background-color: rgb(110, 204, 173);
+}
+.btn-process {
+    background-color: rgb(209, 209, 177);
+}
+.btn-process:hover {
+    color:white !important;
+    background-color: rgb(212, 212, 130);
+}
+.btn-tRcpt {
+    background-color: rgb(213, 211, 236);
+}
+.btn-tRcpt:hover {
+    color:white !important;
+    background-color: rgb(179, 173, 238);
+}
+.btn-report {
+    background-color: rgb(187, 217, 230);
+}
+.btn-report:hover {
+    color:white !important;
+    background-color: rgb(143, 204, 229);
+}
+.btn-ref {
+    background-color: rgb(184, 219, 156);
+}
+.btn-ref:hover {
+    color:white !important;
+    background-color: rgb(180, 223, 180);
+}
+.change-checkImg{
+    font-family: "ABeeZee", sans-serif;
+    height: 300px;
+    width: 100%;
+    padding: 1em;
+}
+.img-here {
+    position: relative;
+    background: rgba(245, 175, 128, 0.1);
+    top: 0;
+    height: 13em;
+    width: 100%;
+    display: flex;
+}
+
+.hover-pic i {
+    font-size: 50px;
+}
+
+.hover-pic h5 {
+    font-size: 14px;
+}
+.upload-btn {
+    padding-top: 1em;
+}
+.tbl-value {
+    border: 1px solid gray;
+    width: 6rem;
 }

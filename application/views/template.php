@@ -59,6 +59,7 @@
     <script src="<?php echo base_url('assets/vendors/mdb/js/mdb.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/ngMask/dist/ngMask.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/globalize-master/src/core.js'); ?>"></script>
+    <script src="<?php echo base_url('assets/vendors/bower_components/ngMask/dist/ngMask.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/angular-ui-router/release/angular-ui-router.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/oclazyload/dist/ocLazyLoad.min.js'); ?>"></script>
     <script src="<?php echo base_url('assets/vendors/bower_components/angular-animate/angular-animate.min.js'); ?>"></script>
