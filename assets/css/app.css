@@ -716,8 +716,8 @@ li.active span {
 }
 
 .form-control {
-    height: 2.5em;
-    font-weight: 500;
+    height: 2em;
+    font-weight: 300;
 }
 
 .form-control:focus {
@@ -2190,12 +2190,20 @@ div.dot {
     margin-bottom: .5em;
 }
 .cca-label {
-    text-align: right;
+    /* text-align: right; */
+    vertical-align: bottom;
+    margin-top: 0.7em;
+}
+.tr-label {
+    /* text-align: right; */
     vertical-align: bottom;
     margin-top: 0.7em;
 }
 .cca-input {
     margin-top: 0.5em;
+}
+.dd-label {
+    margin-top: 0.4em;
 }
 .cca-data {
     text-align: left;
@@ -2203,7 +2211,7 @@ div.dot {
     margin-top: 0.7em;
 }
 .dr {
-    padding-left: 2em;
+    /* padding-left: 2em; */
     padding-top: 1em;
 }
 .btns{
@@ -2256,7 +2264,7 @@ div.dot {
 }
 .change-checkImg{
     font-family: "ABeeZee", sans-serif;
-    height: 300px;
+    height: 16em;
     width: 100%;
     padding: 1em;
 }
@@ -2281,5 +2289,14 @@ div.dot {
 }
 .tbl-value {
     border: 1px solid gray;
-    width: 6rem;
+    width: 40%;
+}
+.tbl-payment-summary {
+    font-size: 1.2rem;;
+}
+.btn-search {
+    padding: 3px 12px;
+}
+.payment-dtl {
+    padding: 0.2em;
 }

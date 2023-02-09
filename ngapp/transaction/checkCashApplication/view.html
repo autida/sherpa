@@ -11,81 +11,89 @@
             <button class="btn btn-report">REPORT</button>
         </div>
      </div>
-    <div class="row sctt">
-        <div class="col-md-8">
-            <div class="row">
-                <div class="col-md-2 cca-label" >
-                    <label>Salesman:</label>
+     <!-- sctt -->
+    <div class="row ">
+        <div class="col-md-12">
+            <div class="col-md-8">
+                <div class="row">
+                    <div class="col-md-2 cca-label" >
+                        <label>Salesman:</label>
+                    </div>
+                    <div class="input-group col-md-5 cca-input">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default btn-search" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                    </div>
                 </div>
-                <div class="input-group col-md-5 cca-input">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                      </button>
+                <div class="row">
+                    <div class="col-md-2 cca-label" >
+                        <label>Customer:</label>
+                    </div>
+                    <div class="input-group col-md-5 cca-input">
+                        <input type="text" class="form-control" placeholder="Search">
+                        <div class="input-group-btn">
+                          <button class="btn btn-default btn-search" type="submit">
+                            <i class="glyphicon glyphicon-search"></i>
+                          </button>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" >
+                        <label class="dr">&nbsp;</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4" >
+                        <label class="dr">DR/ SALES INVOICE NO</label>
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-md-2 cca-label" >
-                    <label>Customer:</label>
-                </div>
-                <div class="input-group col-md-5 cca-input">
-                    <input type="text" class="form-control" placeholder="Search">
-                    <div class="input-group-btn">
-                      <button class="btn btn-default" type="submit">
-                        <i class="glyphicon glyphicon-search"></i>
-                      </button>
+            <div class="col-md-4">
+                <div class="row">
+                    <div class="col-md-6 tr-label" >
+                        <label>Transaction No.:</label>
+                    </div>
+                    <div class="col-md-6 cca-data" >
+                        <span>CC00000456</span>
                     </div>
                 </div>
-            </div>
-            <div class="row">
-                <div class="col-md-4" >
-                    <label class="dr">DR/ SALES INVOICE NO</label>
+                <div class="row" >
+                    <div class="col-md-6 tr-label" >
+                        <label>Transaction Date:</label>
+                    </div>
+                    <div class="col-md-6 cca-data" >
+                        <span>02-07-2023</span>
+                    </div>
                 </div>
-            </div>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-6 cca-label" >
-                    <label>Transaction No.:</label>
+                <div class="row">
+                    <div class="col-md-1 cca-label" >
+                        <input type="checkbox">
+                    </div>
+                    <div class="col-md-6 cca-data" >
+                        <span>BANK DEPOSITED</span>
+                    </div>
                 </div>
-                <div class="col-md-6 cca-data" >
-                    <span>CC00000456</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6 cca-label" >
-                    <label>Transaction Date:</label>
-                </div>
-                <div class="col-md-6 cca-data" >
-                    <span>02-07-2023</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-1 cca-label" >
-                    <input type="checkbox">
-                </div>
-                <div class="col-md-6 cca-data" >
-                    <span>BANK DEPOSITED</span>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-1 cca-label" >
-                    <input type="checkbox">
-                </div>
-                <div class="col-md-6 cca-data" >
-                    <span>BOUNCED CHECK</span>
+                <div class="row">
+                    <div class="col-md-1 cca-label" >
+                        <input type="checkbox">
+                    </div>
+                    <div class="col-md-6 cca-data" >
+                        <span>BOUNCED CHECK</span>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
     <div class="row dr">
         <div class="col-md-5">
-            <div style="height: 16em;" ui-grid="vm.dr" ui-grid-selection ui-grid-resize-columns></div>
+            <div style="height: 20em;" ui-grid="vm.dr" ui-grid-selection ui-grid-resize-columns></div>
         </div>
         <div class="col-md-3">
-            <table>
+            <table class="tbl-payment-summary">
                 <tr>
                   <th colspan="2">Payment Summary</th>
                 </tr>
@@ -93,39 +101,39 @@
                     <td> &emsp;</td>
                 </tr>
                 <tr>
-                  <td class="tbl-value">$$$$$$</td>
+                  <td class="tbl-value">&nbsp;</td>
                   <td><i>&emsp;Total Invoice Amount</i></td>
                 </tr>
                 <tr>
-                  <td class="tbl-value">$$$$$$</td>
+                  <td class="tbl-value">&nbsp;</td>
                   <td><i>&emsp;Applied SI Amount</i></td>
                 </tr>
                 <tr>
-                    <td class="tbl-value">$$$$$$</td>
+                    <td class="tbl-value">&nbsp;</td>
                     <td><i>&emsp;Deductibles</i></td>
                   </tr>
                   <tr>
                     <td> &emsp;</td>
                 </tr>
                   <tr>
-                    <td class="tbl-value">$$$$$$</td>
+                    <td class="tbl-value">&nbsp;</td>
                     <td><b><i>&emsp;Total Net Amount due</i></b></td>
                   </tr>
                   <tr>
                     <td> &emsp;</td>
                 </tr>
                   <tr>
-                    <td class="tbl-value">$$$$$$</td>
+                    <td class="tbl-value">&nbsp;</td>
                     <td><i>&emsp;Balance</i></td>
                   </tr>
               </table>
         </div>
         <div class="col-md-4">
             <div class="row">
-                <div class="col-md-5 cca-label" >
+                <div class="col-md-5 dd-label" >
                     <label>Deposited Date: </label>
                 </div>
-                <div class="col-md-6 cca-data" >
+                <div class="col-md-7" >
                     <input type="date" class="form-control">
                 </div>
             </div>
@@ -141,6 +149,164 @@
                 </div>
             </div>
         </div>
+    </div><hr>
+    <div class="row dr">
+        <div class="col-md-10">
+            <label for="deductibles" style="margin-top: .2em; font-weight: bolder;"><u>DEDUCTIBLES</u></label>
+        </div>
+        <div class="col-md-2">
+            <input type="text" class="form-control" id="deductibles" readonly>
+        </div>
     </div>
-    
+    <div class="row dr">
+        <div class="col-md-4">
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="discount" style="margin-top: .2em;">Discount</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="discount" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="ewt" style="margin-top: .2em;">EWT</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="ewt" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="bad-order" style="margin-top: .2em;">Bad Order</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="bad-order" >
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="display-allowance" style="margin-top: .2em;">Display Allowance</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="display-allowance" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="rebates" style="margin-top: .2em;">Rebates</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="rebates" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="listing-fee" style="margin-top: .2em;">Listing Fee</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="listing-fee" >
+                </div>
+            </div>
+        </div>
+          <div class="col-md-4">
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="rud" style="margin-top: .2em;">RUD/NS</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="rud" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="others" style="margin-top: .2em;">Others</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="others" >
+                </div>
+            </div>
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-6">
+                    <label for="remarks" style="margin-top: .2em;">Remarks</label>
+                </div>
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="remarks" >
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row dr">
+        <div class="col-md-10">
+            <label for="deductibles" style="margin-top: .5em; font-weight: bolder;"><u>PAYMENT DETAILS</u></label>
+        </div>
+    </div>
+    <div class="row dr" style="margin-bottom: 5em;">
+        <div class="col-md-12">
+            <div class="row" style="margin-top: 0.2em;">
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="remarks" style="margin-top: .2em;">Type of Payment</label>
+                        </div>
+                    <div class="row payment-dtl">
+                        <select class="form-control">
+                            <option value="value1">CASH</option>
+                            <option value="value2">DATED CHECK</option>
+                            <option value="value3">PDC</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="amount" style="margin-top: .2em;">Amount</label>
+                    </div>
+                    <div class="row payment-dtl">
+                            <input type="text" class="form-control" id="amount" >
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="remarks" style="margin-top: .2em;">Check Number</label>
+                        </div>
+                    <div class="row payment-dtl">
+                        <input type="text" class="form-control" id="remarks" >
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="remarks" style="margin-top: .2em;">Check Date</label>
+                        </div>
+                    <div class="row payment-dtl">
+                        <input type="date" class="form-control" id="remarks" >
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="remarks" style="margin-top: .2em;">Bank</label>
+                        </div>
+                    <div class="row payment-dtl">
+                        <select class="form-control">
+                            <option value="value1">China Bank</option>
+                            <option value="value2">Bank 2</option>
+                            <option value="value3">Bank 3</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="col-md-2">
+                    <div class="row payment-dtl"> 
+                         <label for="remarks" style="margin-top: .2em;">Branch</label>
+                        </div>
+                    <div class="row payment-dtl">
+                        <input type="text" class="form-control" id="remarks" >
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+    <div class="row dr">
+        <span>{{vm.date | date:'MM-dd-yyyy HH:mm a'}}</span>
+    </div>
 </div>
