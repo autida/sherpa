@@ -3,12 +3,13 @@
 .toolbar {
     width: 100%;
     position: fixed;
-    background: #e9e9e9;
+    background: white;
     height: 51px;
     top: 0;
     left: 0;
     z-index: 1016;
-    border-bottom: 1px solid #c2cfd6;
+    /* border-bottom: 1px solid #c2cfd6; */
+    box-shadow: 0px 2px rgb(0 0 0 / 5%);
 }
 
 .circle {
@@ -133,7 +134,7 @@
 }
 
 .sidebar {
-    background: rgb(38 100 153);
+    background: #0477BF;
 }
     
 
@@ -438,7 +439,7 @@
     height: 100px;
     display: flex;
     width: 100%;
-    background: rgba(167, 161, 161, 1);
+    /* background: rgba(167, 161, 161, 1); */
 }
 
 .sidebar-nav .brand-logo {
@@ -719,6 +720,18 @@ li.active span {
     height: 2em;
     font-weight: 300;
 }
+.custom-form-control {
+    height: 2em;
+    font-weight: 300;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
 
 .form-control:focus {
     box-shadow: none;
@@ -762,7 +775,9 @@ li.active span {
 .form-control.glow {
     border: 1px solid #079ff8;
 }
-
+.custom-form-control.glow {
+    border: 1px solid #079ff8;
+}
 .form-control[disabled] {
     background: #fff;
 }
@@ -2186,13 +2201,19 @@ div.dot {
 }
 /* new */ 
 .rw-height {
-    height: 3em;
+    height: 2em;
     margin-bottom: .5em;
 }
 .cca-label {
     /* text-align: right; */
     vertical-align: bottom;
     margin-top: 0.7em;
+}
+label {
+    color: #023b5fcf !important
+}
+.row {
+    padding: 0;
 }
 .tr-label {
     /* text-align: right; */
@@ -2217,8 +2238,37 @@ div.dot {
 .btns{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    /* justify-content: space-around; */
     color: white;
+}
+.btn {
+    /* margin: .2em !important;
+    background-color: white;
+    color: #6CBEDD;
+    width: 3em;
+    font-weight: bold;
+    border: 1px solid #D7D7D7; */
+}
+.btn-cca-menu {
+    margin: 0.1em !important;
+    background-color: #dbdbdb00;
+    color: #023b5fad;
+    width: 7em;
+    border: 1px solid #D7D7D7;
+    height: 2.2em;
+    
+}
+.btn-cca-menu:hover {
+    background-color: #6CBEDD;
+    /* border: 1px solid #D7D7D7; */
+    color: white;
+    box-shadow: 0px 4px rgba(182, 182, 182, 0.05);
+}
+.btn-cca-menu:active {
+    background-color: #6CBEDD;
+    /* border: 1px solid #D7D7D7; */
+    color: white;
+    box-shadow: 0px 4px rgba(182, 182, 182, 0.05);
 }
 .btn-new {
     background-color: rgb(255, 209, 209);
@@ -2262,10 +2312,15 @@ div.dot {
     color:white !important;
     background-color: rgb(180, 223, 180);
 }
+/* salses */
+.sales-trans {
+    margin-top: 2em;
+}
+
 .change-checkImg{
     font-family: "ABeeZee", sans-serif;
     height: 16em;
-    width: 100%;
+    width: 70%;
     padding: 1em;
 }
 .img-here {
@@ -2298,5 +2353,6 @@ div.dot {
     padding: 3px 12px;
 }
 .payment-dtl {
-    padding: 0.2em;
+    padding: 0.3em;
+    padding-left: 0.7em;
 }

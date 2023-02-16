@@ -1,19 +1,18 @@
 <div ng-controller="CheckCashApplicationCtrl as vm">
-    <div class="row rw-height"></div>
+     <div class="row rw-height"></div>
      <div class="row rw-height">
-        <div class="col-md-6"></div>
-        <div class="col-md-6 btns">
-            <button class="btn btn-info">REFRESH</button>
-            <button class="btn btn-new">NEW</button>
-            <button class="btn btn-save">SAVE</button>
-            <button class="btn btn-process">PROCESS</button>
-            <button class="btn btn-tRcpt">TransRcpt</button>
-            <button class="btn btn-report">REPORT</button>
+        <div class="col-md-12 btns">
+            <button class="btn btn-cca-menu">REFRESH</button>
+            <button class="btn btn-cca-menu">NEW</button>
+            <button class="btn btn-cca-menu">SAVE</button>
+            <button class="btn btn-cca-menu">PROCESS</button>
+            <button class="btn btn-cca-menu">TransRcpt</button>
+            <button class="btn btn-cca-menu">REPORT</button>
         </div>
      </div>
      <!-- sctt -->
     <div class="row ">
-        <div class="col-md-12">
+        <div class="sales-trans">
             <div class="col-md-8">
                 <div class="row">
                     <div class="col-md-2 cca-label" >
@@ -22,7 +21,7 @@
                     <div class="input-group col-md-5 cca-input">
                         <input type="text" class="form-control" placeholder="Search">
                         <div class="input-group-btn">
-                          <button class="btn btn-default btn-search" type="submit">
+                          <button class="btn btn-default btn-search" type="button">
                             <i class="glyphicon glyphicon-search"></i>
                           </button>
                         </div>
@@ -39,11 +38,6 @@
                             <i class="glyphicon glyphicon-search"></i>
                           </button>
                         </div>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4" >
-                        <label class="dr">&nbsp;</label>
                     </div>
                 </div>
                 <div class="row">
@@ -69,86 +63,50 @@
                         <span>02-07-2023</span>
                     </div>
                 </div>
-                <div class="row">
-                    <div class="col-md-1 cca-label" >
-                        <input type="checkbox">
-                    </div>
-                    <div class="col-md-6 cca-data" >
-                        <span>BANK DEPOSITED</span>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-1 cca-label" >
-                        <input type="checkbox">
-                    </div>
-                    <div class="col-md-6 cca-data" >
-                        <span>BOUNCED CHECK</span>
-                    </div>
-                </div>
             </div>
         </div>
     </div>
     <div class="row dr">
-        <div class="col-md-5">
+        <div class="col-md-8 tbl-grid">
             <div style="height: 20em;" ui-grid="vm.dr" ui-grid-selection ui-grid-resize-columns></div>
         </div>
-        <div class="col-md-3">
-            <table class="tbl-payment-summary">
+        <!-- <div class="col-md-5"> -->
+            <table class="col-md-4 tbl-payment-summary">
                 <tr>
-                  <th colspan="2">Payment Summary</th>
+                  <th colspan="2"><label>Payment Summary</label></th>
                 </tr>
                 <tr>
                     <td> &emsp;</td>
                 </tr>
                 <tr>
-                  <td class="tbl-value">&nbsp;</td>
-                  <td><i>&emsp;Total Invoice Amount</i></td>
+                  <td><input type="text" class="form-control"></td>
+                  <td><i>&nbsp;<label>Total Invoice Amount</label></i></td>
                 </tr>
                 <tr>
-                  <td class="tbl-value">&nbsp;</td>
-                  <td><i>&emsp;Applied SI Amount</i></td>
+                    <td><input type="text" class="form-control"></td>
+                  <td><i>&nbsp;<label>Applied SI Amount</label></i></td>
                 </tr>
                 <tr>
-                    <td class="tbl-value">&nbsp;</td>
-                    <td><i>&emsp;Deductibles</i></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><i>&nbsp;<label>Deductibles</label></i></td>
                   </tr>
                   <tr>
                     <td> &emsp;</td>
                 </tr>
                   <tr>
-                    <td class="tbl-value">&nbsp;</td>
-                    <td><b><i>&emsp;Total Net Amount due</i></b></td>
+                     <td><input type="text" class="form-control"></td>
+                    <td><b><i>&nbsp;<label>Total Net Amount due</label></i></b></td>
                   </tr>
                   <tr>
                     <td> &emsp;</td>
                 </tr>
                   <tr>
-                    <td class="tbl-value">&nbsp;</td>
-                    <td><i>&emsp;Balance</i></td>
+                    <td><input type="text" class="form-control"></td>
+                    <td><i>&nbsp;<label>Balance</label></i></td>
                   </tr>
               </table>
-        </div>
-        <div class="col-md-4">
-            <div class="row">
-                <div class="col-md-5 dd-label" >
-                    <label>Deposited Date: </label>
-                </div>
-                <div class="col-md-7" >
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-            <div class="row upload-btn">
-                <div class="col-md-4">
-                    <input type="file" value="Upload Image">
-                </div>
-            </div>
-            <div class="row">
-                <div class="change-checkImg">
-                    <img id="img" ng-src="{{ vm.profile.ProfilePic }}">
-                    <div class="img-here"></div>
-                </div>
-            </div>
-        </div>
+        <!-- </div> -->
+        
     </div><hr>
     <div class="row dr">
         <div class="col-md-10">
@@ -238,12 +196,14 @@
             </div>
         </div>
     </div><hr>
+    
     <div class="row dr">
         <div class="col-md-10">
-            <label for="deductibles" style="margin-top: .5em; font-weight: bolder;"><u>PAYMENT DETAILS</u></label>
+            <label for="deductibles" style="margin-top: .5em; font-weight: bolder;"><u>PAYMENT DETAILS</u>&emsp;<i class="fa fa-plus-circle"></i></label>
         </div>
     </div>
-    <div class="row dr" style="margin-bottom: 5em;">
+    
+    <div class="row dr">
         <div class="col-md-12">
             <div class="row" style="margin-top: 0.2em;">
                 <div class="col-md-2">
@@ -305,8 +265,48 @@
             </div>
         </div>
         
+    </div><hr>
+    <div class="row dr">
+        <div class="col-md-10">
+            <label for="deductibles" style="margin-top: .5em; font-weight: bolder;"><u>UPLOAD CHECK</i></u></label>
+        </div>
     </div>
     <div class="row dr">
-        <span>{{vm.date | date:'MM-dd-yyyy HH:mm a'}}</span>
+        <div class="col-md-3">
+            <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline1" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline1">Bank Deposit</label>
+              </div>
+              <div class="custom-control custom-radio custom-control-inline">
+                <input type="radio" id="customRadioInline2" name="customRadioInline1" class="custom-control-input">
+                <label class="custom-control-label" for="customRadioInline2">Bounced Check</label>
+              </div>
+        </div>
+    </div>
+    <div class="row dr">
+        <div class="col-md-12">
+            <div class="row">
+                <div class="col-md-2 dd-label" >
+                    <label>Deposited Date: </label>
+                </div>
+                <div class="col-md-3" >
+                    <input type="date" class="form-control">
+                </div>
+            </div>
+            <div class="row upload-btn">
+                <div class="col-md-4">
+                    <input type="file" value="Upload Image">
+                </div>
+            </div>
+            <div class="row">
+                <div class="change-checkImg">
+                    <img id="img" ng-src="{{ vm.profile.image }}">
+                    <div class="img-here"></div>
+                </div>
+            </div>
+    </div>
+    </div>
+    <div class="row dr">
+        <label>{{vm.date | date:'MM-dd-yyyy HH:mm a'}}</label>
     </div>
 </div>

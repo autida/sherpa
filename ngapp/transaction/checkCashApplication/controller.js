@@ -15,11 +15,11 @@ function CheckCashApplicationCtrl($scope, $ocLazyLoad, $injector) {
         modifierKeysToMultiSelect: true,
         enableRowHeaderSelection: true,
         columnDefs: [
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><br>Invoice No.</div>', field: 'InvoiceNo'},
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center">Invoice <br>Amount</div>', field: 'InvoiceAmount'},
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center">Invoice <br>Amount Applied</div>', field: 'InvoiceAmountApplied'},
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><br>Invoice Date </div>', field: 'InvoiceDate'},
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center">Invoice <br>Reference No.</div>', field: 'InvoiceReferenceNo'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><br><label>Invoice No.</label></div>', field: 'InvoiceNo'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><label>Invoice <br>Amount</label></div>', field: 'InvoiceAmount'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><label>Invoice <br>Amount Applied</label></div>', field: 'InvoiceAmountApplied'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><br><label>Invoice Date </label></div>', field: 'InvoiceDate'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center"><label>Invoice <br>Reference No.</label></div>', field: 'InvoiceReferenceNo'},
         ],
         data: 'vm.filtered',
         onRegisterApi: function(gridApi) {
@@ -35,7 +35,7 @@ function CheckCashApplicationCtrl($scope, $ocLazyLoad, $injector) {
         modifierKeysToMultiSelect: true,
         enableRowHeaderSelection: false,
         columnDefs: [
-            { headerCellTemplate: '<div style="vertical-align:center; font-size:0.9rem; text-align: center">Payment<br>Summary</div>', field: 'InvoiceNo'},
+            { headerCellTemplate: '<div style="vertical-align:center; font-size:1.3rem; text-align: center">Payment<br>Summary</div>', field: 'InvoiceNo'},
         ],
         data: 'vm.filtered',
         onRegisterApi: function(gridApi) {
